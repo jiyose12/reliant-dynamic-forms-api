@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: MyText
+  mutable: false
+  default: MyString
+  multiple: false
+  keyvaluepairdefinition: one
+
+two:
+  type: MyText
+  mutable: false
+  default: MyString
+  multiple: false
+  keyvaluepairdefinition: two
