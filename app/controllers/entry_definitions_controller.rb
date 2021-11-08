@@ -16,6 +16,8 @@ class EntryDefinitionsController < ApplicationController
   # POST /entry_definitions
   def create
     @entry_definition = EntryDefinition.new(entry_definition_params)
+  
+    @entry_definition.key_value_pair_definition_id = params[:key_value_pair_definition]
 
     if @entry_definition.save
       render json: @entry_definition, status: :created, location: @entry_definition
@@ -46,6 +48,6 @@ class EntryDefinitionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_definition_params
-      params.require(:entry_definition).permit(:type, :mutable, :default, :multiple, :keyvaluepairdefinition_id)
+      params.require(:entry_definition).permit(:type?, :mutable, :default, :multiple, :keyvaluepairdefinition_id)
     end
 end

@@ -7,5 +7,5 @@ class EntryDefinition < ApplicationRecord
     self.multiple ||= false
   end
 
-  belongs_to :key_value_pair_definition
+  has_one :key_value_pair_definition
 end

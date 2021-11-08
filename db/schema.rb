@@ -10,26 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_152244) do
+ActiveRecord::Schema.define(version: 2021_11_06_141705) do
 
   create_table "entry_definitions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "type"
     t.boolean "mutable"
     t.string "default"
     t.boolean "multiple"
-    t.bigint "key_value_pair_definition_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["key_value_pair_definition_id"], name: "index_entry_definitions_on_key_value_pair_definition_id"
   end
 
   create_table "key_value_pair_definitions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "key"
-    t.integer "value"
+    t.bigint "key_id_id", null: false
+    t.bigint "value_id_id", null: false
     t.integer "children"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["key_id_id"], name: "index_key_value_pair_definitions_on_key_id_id"
+    t.index ["value_id_id"], name: "index_key_value_pair_definitions_on_value_id_id"
   end
 
-  add_foreign_key "entry_definitions", "key_value_pair_definitions"
+  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "key_id_id"
+  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "value_id_id"
 end

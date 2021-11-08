@@ -1,4 +1,11 @@
 class KeyValuePairDefinition < ApplicationRecord
-    belongs_to :parent, :class_name => 'KeyValuePairDefinition'
-    has_many :children, :class_name => 'KeyValuePairDefinition', :foreign_key => 'parent_id'
+    before_save :default_values
+
+  def default_values
+    self.key ||= nil
+    self.value ||= nil
+    self.children ||= nil
+  end
+
+  belongs_to :entry_definition
 end
