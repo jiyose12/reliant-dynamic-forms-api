@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 2021_11_06_141705) do
   end
 
   create_table "key_value_pair_definitions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "key_id_id", null: false
-    t.bigint "value_id_id", null: false
+    t.bigint "key_id", null: false
+    t.bigint "value_id", null: false
     t.integer "children"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["key_id_id"], name: "index_key_value_pair_definitions_on_key_id_id"
-    t.index ["value_id_id"], name: "index_key_value_pair_definitions_on_value_id_id"
+    t.index ["key_id"], name: "index_key_value_pair_definitions_on_key_id"
+    t.index ["value_id"], name: "index_key_value_pair_definitions_on_value_id"
   end
 
-  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "key_id_id"
-  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "value_id_id"
+  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "key_id"
+  add_foreign_key "key_value_pair_definitions", "entry_definitions", column: "value_id"
 end
